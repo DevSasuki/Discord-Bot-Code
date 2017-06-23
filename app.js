@@ -31,13 +31,6 @@ const fcoin = [
   'Heads', 'Tails'
 ]
 
-function clean(text) {
-  if (typeof(text) === 'string')
-    return text.replace(/`/g, '`' + String.fromCharCode(8203)).replace(/@/g, '@' + String.fromCharCode(8203));
-  else
-      return text;
-}
-
 client.on('guildCreate', guild => {
   guild.defaultChannel.send('Hey! Thanks for inviting me to your server!\n\n- To see my commands, do: ~help\nTo see my support server, go to: <YourURL>')
 });
@@ -123,30 +116,30 @@ if (message.content.startsWith(config.prefix + 'roll')) {
 if (message.content.startsWith(config.prefix + 'help')) {
   message.react('👌');
   message.channel.send('You\'ve been DMed a list of commands! :mailbox_with_mail:')
-  message.author.send(`__<botName> Commands__
-    \n\n__Fun__
-    \n**ping**: Checks if the bot\'s still alive
-    \n**roll**: Rolls a random number!
-    \n**rate**: Will rate the user who said it
-    \n**8ball**: The bot will respond to any question you throw at it! (This is, of course, with the set responses)
-    \n**flipcoin**: The bot will respond with either heads or tails!
-    \n**say**: Will say the users input!
-    \n**avatar**: Displays the users avatar! (Works with GIFs too!)
-    \n**lenny**: Will create a lenny face!
-    \n**tableflip**: The bot will throw tables!
-    \n**unflip**: Unflips a table!
-    \n**f**: Pay your respects
-    \n\n__Moderation__
-    \n**purge**: The bot will purge any message (Limit: 2 - 100 Messages)
-    \n**ban**: Bans the user specified
-    \n**kick**: Kicks the user specified
-    \n**mute**: Mutes the user specified
-    \n**unmute**: Unmutes the user specified
-    \n\n__Utility__
-    \n**support**: Directs you to the support server!
-    \n**invite**: Gives bot invite link, this is useful for adding the bot to your server!
-    \n**uptime**: Shows bot uptime
-    \n**serverinfo**: Shows info about the server`)
+  message.author.send(`__<botName> Commands__\n
+__Fun__
+**ping**: Checks if the bot\'s still alive
+**roll**: Rolls a random number!
+**rate**: Will rate the user who said it
+**8ball**: The bot will respond to any question you throw at it! (This is, of course, with the set responses)
+**flipcoin**: The bot will respond with either heads or tails!
+**say**: Will say the users input!
+**avatar**: Displays the users avatar! (Works with GIFs too!)
+**lenny**: Will create a lenny face!
+**tableflip**: The bot will throw tables!
+**unflip**: Unflips a table!
+**f**: Pay your respects\n
+__Moderation__
+**purge**: The bot will purge any message (Limit: 2 - 100 Messages)
+**ban**: Bans the user specified
+**kick**: Kicks the user specified
+**mute**: Mutes the user specified
+**unmute**: Unmutes the user specified\n
+__Utility__
+**support**: Directs you to the support server!
+**invite**: Gives bot invite link, this is useful for adding the bot to your server!
+**uptime**: Shows bot uptime
+**serverinfo**: Shows info about the server`)
 }
 
 if (message.content.startsWith(config.prefix + 'avatar')) {
