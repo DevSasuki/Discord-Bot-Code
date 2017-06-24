@@ -48,11 +48,6 @@ client.on("guildMemberAdd", (member) => {
   }
 });
 
-client.on("guildMemberRemove", (member) => {
-  const guild = member.guild;
-  if (newUsers[guild.id].includes(member.id)) newUsers.delete(member.id);
-});
-
 // Message Handler Event (Commands Go Inside)
 client.on('message', message => {
   if(!message.content.startsWith(config.prefix)) return;
