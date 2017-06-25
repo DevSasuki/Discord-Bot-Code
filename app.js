@@ -24,7 +24,7 @@ client.on('ready', () => {
 const prefix = "~";
 
 const responses = [
-   'Yes, most definitely!', 'Half, maybe 2', 'kayyy', 'Sure, I guess', 'Don\'t want to answer, ttml', 'nep', 'Naw fam'
+   'Yes', 'A small chance', 'Maybe...', 'Not in your wildest dreams', 'Huhmmm, No...', 'Possibly', 'I hope so', 'Pffft', 'Forget about it', 'Never!'
 ]
 
 const fcoin = [
@@ -116,7 +116,7 @@ __Fun__
 **ping**: Checks if the bot\'s still alive
 **roll**: Rolls a random number!
 **rate**: Will rate the user who said it
-**8ball**: The bot will respond to any question you throw at it! (This is, of course, with the set responses)
+**8ball**: Ask the magic 8ball a question! (Do \`~usage 8ball\` for usage information!)
 **flipcoin**: The bot will respond with either heads or tails!
 **say**: Will say the users input!
 **avatar**: Displays the users avatar! (Works with GIFs too!)
@@ -148,7 +148,13 @@ if (message.content.startsWith(config.prefix + 'support')) {
 } }) }
 
 if (message.content.startsWith(config.prefix + '8ball')) {
-   message.channel.send(`${responses[Math.floor(Math.random() * responses.length)]}`);
+  let args = message.content.split(" ").slice(1);
+  let question = args[0]
+  if (!message.content.endsWith('?')) {
+    return message.channel.send('You must ask me a question, first!')
+} else {
+  message.channel.send(`:8ball: | ${responses[Math.floor(Math.random() * responses.length)]}`);
+  }
 }
 
 if (message.content.startsWith(config.prefix + 'flipcoin')) {
@@ -294,6 +300,16 @@ var milliseconds = parseInt((client.uptime % 1000) / 100),
 }
 })
 }
+  
+  if (message.content.startsWith(prefix + 'usage 8ball')) {
+    const embed = new Discord.RichEmbed()
+    .setTitle("8ball Usage")
+    .setColor(0xc1c1c1)
+    .addField("Usage", "~8ball <Question>")
+    .addField("Note", "All questions must end with a `?`")
+
+    message.channel.send({embed});
+  }
 
 });
 // Commands will go up there, not below or above
