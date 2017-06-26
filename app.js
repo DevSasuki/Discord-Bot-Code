@@ -134,7 +134,8 @@ __Utility__
 **support**: Directs you to the support server!
 **invite**: Gives bot invite link, this is useful for adding the bot to your server!
 **uptime**: Shows bot uptime
-**serverinfo**: Shows info about the server`)
+**serverinfo**: Shows info about the server
+**userinfo**: Finds info about the user (Can also be classified as a fun command)`)
 }
 
 if (message.content.startsWith(config.prefix + 'avatar')) {
@@ -309,6 +310,32 @@ var milliseconds = parseInt((client.uptime % 1000) / 100),
     .addField("Note", "All questions must end with a `?`")
 
     message.channel.send({embed});
+  }
+  
+  var target = message.mentions.users.first();
+
+  if(message.content.startsWith(prefix + 'userinfo')) {
+    if (message.mentions.users.size === 0) return
+  const embed = new Discord.RichEmbed()
+  .setTitle(``)
+  .setAuthor(`${target.username}`, `${target.avatarURL}`)
+
+  .setColor(0xc1c1c1)
+  .setDescription('')
+  .setFooter('')
+  .setImage('')
+  .setThumbnail(`${target.avatarURL}`)
+
+  .setTimestamp(new Date())
+  .addField('Full username',
+    `${target.tag}`)
+  .addField('When user was created ', `${target.createdAt}`, true)
+  .addField('Users presense status ', `${target.presence.status}`, true)
+  .addField('Users nickname', `${target}`, true)
+  .addField('Is a bot ', `${target.bot}`, true)
+  .addField('Last message sent by user', `${target.lastMessage}`, true);
+
+  message.channel.send({embed});
   }
 
 });
