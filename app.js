@@ -80,7 +80,7 @@ if (message.content.startsWith(config.prefix + 'kick')) {
   if (!message.member.permissions.has("KICK_MEMBERS")) {
     message.channel.send('Sorry, I do not have permission to execute the "kick" command!');
     return;
-  } else if (!message.channel.permissionsFor(client.user).has("KICK_MEMBERS")) {
+  } else if (!message.guild.member(client.user).permissions.has("KICK_MEMBERS")) {
     message.channel.send("Sorry, I do not have permission to execute this command!");
     return;
   }
@@ -94,7 +94,7 @@ if (message.content.startsWith(config.prefix + 'ban')) {
   if (!message.member.permissions.has("BAN_MEMBERS")) {
     message.channel.send('Sorry, I do not have permission to execute the "ban" command!');
     return;
-  } else if (!message.channel.permissions(client.user).has("BAN_MEMBERS")) {
+  } else if (!message.guild.member(client.user).permissions.has("BAN_MEMBERS")) {
     message.channel.send("Sorry, I do not have permission to execute this command!");
     return;
   }
