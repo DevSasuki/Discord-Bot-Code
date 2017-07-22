@@ -15,6 +15,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 const config = require('./config.json');
+// This is requiring the config.json file, if we didn't do this, things like: config.prefix and config.token wouldn't work
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
@@ -22,6 +23,7 @@ client.on('ready', () => {
 });
 
 const prefix = "~";
+// You can replace the "~"; with config.prefix
 
 const responses = [
    'Yes', 'A small chance', 'Maybe...', 'Not in your wildest dreams', 'Huhmmm, No...', 'Possibly', 'I hope so', 'Pffft', 'Forget about it', 'Never!'
@@ -33,6 +35,7 @@ const fcoin = [
 
 client.on('guildCreate', guild => {
   guild.defaultChannel.send('Hey! Thanks for inviting me to your server!\n\n- To see my commands, do: ~help\nTo see my support server, go to: <YourURL>')
+  // Whenever the bot is added to a server (and is online), this message will be sent
 });
 
 client.on("guildMemberAdd", (member) => {
@@ -46,6 +49,7 @@ client.on("guildMemberAdd", (member) => {
     welcome.send("Welcome our new members to the server!\n" + userlist);
     newUsers[guild.id].clear();
   }
+  // Welcoming system, there's no goodbye system
 });
 
 // Message Handler Event (Commands Go Inside)
@@ -345,5 +349,6 @@ client.login(config.token);
 
 /* 
 Make sure you have a config file before doing 'config.token'!
-If not, just put your token there
+If not, just put your token there.
+I have provided in example config.json file in this repository if you'd like to take a look.
 */
